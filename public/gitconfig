@@ -1,0 +1,28 @@
+[alias]
+	# abbreviations
+	co = checkout
+	hist = log --graph --pretty=format:'%Cred%h%Creset %Cgreen%cd%Creset | %s %C(cyan)[%an]%Creset %Cred%d%Creset' --abbrev-commit --date=short
+	cane = commit --amend --no-edit
+	pfwl = push --force-with-lease
+	psu = push-set-upstream
+	s = status
+
+	# scripts
+	rebase-master = "!rebasemaster() { git stash --include-untracked && git fetch -a && git rebase origin/master && git stash pop; }; rebasemaster"
+	push-set-upstream = "!git push --set-upstream origin $(git branch --show-current)"
+
+[core]
+	pager = delta --dark --keep-plus-minus-markers
+
+[credential]
+	helper = store
+
+[include]
+    path = ~/.gitconfig_user
+
+[interactive]
+	diffFilter = delta --dark --color-only --keep-plus-minus-markers
+
+[pull]
+	rebase = false
+	ff = only

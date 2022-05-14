@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  camel-java8:
+    build: .
+    image: camel-build:java8
+    container_name: camel-build-java8
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./git:/git
+      - ./m2-repo:/root/.m2/repository

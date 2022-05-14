@@ -1,0 +1,11 @@
+# Git prompt
+source ~/.git-prompt.sh
+
+PS1='\[\033[32m$(pwd | sed -e 's!/d/home!-!')\033[36m $(__git_ps1 "%s")\033[0m\] 
+\u@\h$ '
+
+# GPG
+export GPG_TTY=$(tty)
+
+# Aliases
+alias ll="ls -lha"
