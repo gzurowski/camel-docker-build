@@ -9,3 +9,5 @@ services:
     volumes:
       - ./git:/git
       - ./m2-repo:/root/.m2/repository
+      - ./private/settings.xml:/root/.m2/settings.xml:ro
+      - ./private/settings-security.xml:/root/.m2/settings-security.xml:ro

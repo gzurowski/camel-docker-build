@@ -31,7 +31,6 @@ RUN chmod -R 600 /root/.gnupg/ && \
     expect -c "spawn gpg --edit-key ${KEYID} trust quit; send \"5\ry\r\"; expect eof"
 
 # Maven
-COPY private/settings.xml private/settings-security.xml /root/.m2/
 COPY public/mavenrc /root/.mavenrc
 
 COPY public/clone-camel.sh /root/clone-camel.sh
