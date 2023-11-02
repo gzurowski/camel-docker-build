@@ -1,3 +1,4 @@
-git/
-m2-repo/
-
+git-repo/*
+!git-repo/.gitkeep
+m2-repo/*
+!m2-repo/.gitkeep

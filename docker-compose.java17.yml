@@ -7,5 +7,5 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./git:/git
+      - ./git-repo:/git
       - ./m2-repo:/root/.m2/repository
