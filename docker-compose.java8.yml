@@ -8,8 +8,5 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - git:/git
-      - m2-repo:/root/.m2/repository
-volumes:
-  git:
-  m2-repo:
+      - ./git:/git
+      - ./m2-repo:/root/.m2/repository
