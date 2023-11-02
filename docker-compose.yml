@@ -1,7 +1,8 @@
 version: "3.9"
 services:
   camel-java11:
-    build: .
+    build:
+      dockerfile: Dockerfile
     image: camel-build:java11
     container_name: camel-build-java11
     stdin_open: true
