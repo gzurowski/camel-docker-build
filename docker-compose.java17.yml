@@ -1,7 +1,7 @@
 services:
   camel-java17:
     build:
-      dockerfile: Dockerfile-java17
+      dockerfile: Dockerfile.java17
     image: camel-build:java17
     container_name: camel-build-java17
     stdin_open: true
