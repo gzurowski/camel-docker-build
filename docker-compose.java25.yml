@@ -1,0 +1,11 @@
+services:
+  camel-java25:
+    build:
+      dockerfile: Dockerfile.java25
+    image: camel-build:java25
+    container_name: camel-build-java25
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./git-repo:/git
+      - ./m2-repo:/root/.m2/repository
