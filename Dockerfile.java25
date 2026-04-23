@@ -5,7 +5,7 @@ VOLUME [ "/git" ]
 RUN apt-get update && \
     apt-get clean
 
-RUN apt-get install -y expect git gnupg2 subversion sudo vim wget && \
+RUN apt-get install -y curl expect git gnupg2 subversion sudo vim wget && \
     apt-get clean
 
 # Unminimize
