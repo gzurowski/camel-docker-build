@@ -5,7 +5,7 @@ VOLUME [ "/git" ]
 RUN apt-get update && \
     apt-get clean
 
-RUN apt-get install -y curl expect git gnupg2 subversion sudo vim wget xz-utils && \
+RUN apt-get install -y curl expect git gnupg2 libarchive-tools subversion sudo vim wget xz-utils && \
     apt-get clean
 
 # Git
@@ -35,7 +35,7 @@ COPY public/mavenrc /root/.mavenrc
 # See: https://github.com/apache/camel/blob/main/tooling/camel-exe/src/main/native/README.md
 RUN curl --output /tmp/llvm-mingw.tar.xz --location https://github.com/mstorsjo/llvm-mingw/releases/download/20260616/llvm-mingw-20260616-ucrt-ubuntu-22.04-x86_64.tar.xz && \
     mkdir -p /opt/llvm-mingw && \
-    tar -xf /tmp/llvm-mingw.tar.xz -C /opt/llvm-mingw --strip-components=1 && \
+    bsdtar -xf /tmp/llvm-mingw.tar.xz -C /opt/llvm-mingw --strip-components=1 && \
     rm /tmp/llvm-mingw.tar.xz
 ENV PATH="/opt/llvm-mingw/bin:${PATH}"
 
