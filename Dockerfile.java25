@@ -8,9 +8,6 @@ RUN apt-get update && \
 RUN apt-get install -y curl expect git gnupg2 subversion sudo vim wget xz-utils && \
     apt-get clean
 
-# Unminimize
-RUN yes | unminimize
-
 # Git
 COPY private/gitconfig_user /root/.gitconfig_user
 COPY public/gitconfig /root/.gitconfig
