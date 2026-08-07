@@ -5,7 +5,7 @@ VOLUME [ "/git" ]
 RUN apt-get update && \
     apt-get clean
 
-RUN apt-get install -y curl expect git gnupg2 subversion sudo vim wget && \
+RUN apt-get install -y curl expect git gnupg2 subversion sudo vim wget xz-utils && \
     apt-get clean
 
 # Unminimize
@@ -33,6 +33,14 @@ RUN chmod -R 600 /root/.gnupg/ && \
 # Maven
 COPY private/settings.xml private/settings-security.xml /root/.m2/
 COPY public/mavenrc /root/.mavenrc
+
+# llvm-mingw (cross-compilation toolchain for building camel-exe native Windows binaries)
+# See: https://github.com/apache/camel/blob/main/tooling/camel-exe/src/main/native/README.md
+RUN curl --output /tmp/llvm-mingw.tar.xz --location https://github.com/mstorsjo/llvm-mingw/releases/download/20260616/llvm-mingw-20260616-ucrt-ubuntu-22.04-x86_64.tar.xz && \
+    mkdir -p /opt/llvm-mingw && \
+    tar -xf /tmp/llvm-mingw.tar.xz -C /opt/llvm-mingw --strip-components=1 && \
+    rm /tmp/llvm-mingw.tar.xz
+ENV PATH="/opt/llvm-mingw/bin:${PATH}"
 
 COPY public/clone-camel.sh /root/clone-camel.sh
 RUN chmod +x /root/clone-camel.sh
